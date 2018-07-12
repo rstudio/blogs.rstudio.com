@@ -3,18 +3,31 @@
 mkdir -p "blogs"
 mkdir -p "_public"
 
-REPO_NAME="tensorflow-blog"
-REPO_URL="https://github.com/rstudio/${REPO_NAME}.git"
-OUTPUT_DIR="docs"
-DEPLOY_DIR="tensorflow"
+deploy_blog () {
+  
+  # parameters
+  REPO_OWNER=$1
+  REPO_NAME=$2
+  OUTPUT_DIR=$3
+  DEPLOY_DIR=$4
+  
+  # clone the repo if we need to
+  if [ ! -d "blogs/${REPO_NAME}" ]; then
+    (cd blogs && git clone "https://github.com/${REPO_OWNER}/${REPO_NAME}.git")
+  fi
+  
+  # update the repo
+  (cd blogs/${REPO_NAME} && git pull)
 
-if [ ! -d "blogs/${REPO_NAME}" ]; then
-  (cd blogs && git clone ${REPO_URL})
-fi
-(cd blogs/${REPO_NAME} && git pull)
+  # deploy 
+  rm -rf _public/${DEPLOY_DIR}
+  cp -r blogs/${REPO_NAME}/${OUTPUT_DIR} _public/${DEPLOY_DIR}
+}
 
-rm -rf _public/${DEPLOY_DIR}
-cp -r blogs/${REPO_NAME}/${OUTPUT_DIR} _public/${DEPLOY_DIR}
+
+deploy_blog rstudio tensorflow-blog docs tensorflow
+
+
 
 
 
