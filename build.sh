@@ -25,7 +25,10 @@ deploy_blog () {
 }
 
 
-deploy_blog rstudio tensorflow-blog docs tensorflow
+                # REPO_OWNER     # REPO_NAME             # OUTPUT_DIR       # DEPLOY_DIR
+deploy_blog     rstudio          tensorflow-blog         docs               tensorflow
+
+
 
 
 
