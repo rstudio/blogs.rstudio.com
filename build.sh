@@ -27,7 +27,7 @@ deploy_blog () {
 
                 # REPO_OWNER     # REPO_NAME             # OUTPUT_DIR       # DEPLOY_DIR
 deploy_blog     rstudio          tensorflow-blog         docs               tensorflow
-
+deploy_blog     rstudio          cran-security-blog      public             cran-security
 
 
 
