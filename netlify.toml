@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/ai"
-  to = "/tensorflow"
+  from = "/tensorflow"
+  to = "/ai"
   force = true
