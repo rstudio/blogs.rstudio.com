@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/ai"
+  to = "/tensorflow"
+  force = true
