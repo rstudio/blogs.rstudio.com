@@ -29,6 +29,7 @@ deploy_blog () {
 deploy_blog     rstudio          tensorflow-blog         docs               tensorflow
 deploy_blog     rstudio          cran-security-blog      public             cran-security
 deploy_blog     rstudio          pins                    docs/blog          pins
+deploy_blog     rstudio          tensorflow-blog         redirect           ai
 
 
 
