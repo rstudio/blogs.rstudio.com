@@ -2,3 +2,8 @@
   from = "/tensorflow"
   to = "/ai"
   force = true
+
+[[redirects]]
+  from = "/tensorflow/*"
+  to = "/ai/:splat"
+  force = true
