@@ -10,6 +10,7 @@ deploy_blog () {
   REPO_NAME=$2
   OUTPUT_DIR=$3
   DEPLOY_DIR=$4
+  OUTPUT_BRANCH=$5
   
   # clone the repo if we need to
   if [ ! -d "blogs/${REPO_NAME}" ]; then
@@ -17,7 +18,12 @@ deploy_blog () {
   fi
   
   # update the repo
-  (cd blogs/${REPO_NAME} && git pull)
+  if [ ! -z "${OUTPUT_BRANCH}" ]; then
+    (cd blogs/${REPO_NAME} && git fetch origin ${OUTPUT_BRANCH})
+    (cd blogs/${REPO_NAME} && git reset --hard origin/${OUTPUT_BRANCH})
+  else
+    (cd blogs/${REPO_NAME} && git pull)
+  fi
 
   # deploy 
   rm -rf _public/${DEPLOY_DIR}
@@ -25,10 +31,11 @@ deploy_blog () {
 }
 
 
-                # REPO_OWNER     # REPO_NAME             # OUTPUT_DIR       # DEPLOY_DIR
-deploy_blog     rstudio          ai-blog                 docs               ai
-deploy_blog     rstudio          cran-security-blog      public             cran-security
-deploy_blog     rstudio          pins                    docs/blog          pins
+                # REPO_OWNER     # REPO_NAME             # OUTPUT_DIR       # DEPLOY_DIR      # OUTPUT_BRANCH
+deploy_blog     rstudio          ai-blog                 ''                 ai-blog           'docs'
+deploy_blog     rstudio          cran-security-blog      public             cran-security     ''
+deploy_blog     rstudio          pins                    docs/blog          pins              ''
+
 
 
 
