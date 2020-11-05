@@ -32,7 +32,7 @@ deploy_blog () {
 
 
                 # REPO_OWNER     # REPO_NAME             # OUTPUT_DIR       # DEPLOY_DIR      # OUTPUT_BRANCH
-deploy_blog     rstudio          ai-blog                 ''                 ai-blog           'docs'
+deploy_blog     rstudio          ai-blog                 ''                 ai                'docs'
 deploy_blog     rstudio          cran-security-blog      public             cran-security     ''
 deploy_blog     rstudio          pins                    docs/blog          pins              ''
 
